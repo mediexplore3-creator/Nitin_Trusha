@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Nitin And Trusha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-spinner"></div>
+            <p>Loading amazing content...</p>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Custom Cursor - Only for desktop -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+   <div class="logo">
+    <h2><img src="https://i.postimg.cc/0jNjXkKR/1000051320-removebg-preview.png" alt="" /></h2>
+            <h2>N&T</h2>
+        </div>
+        <nav>
+            <ul class="navlist">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="form-login.html">Profile</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h3>Navigation</h3>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="form-login.html">Profile</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <main>
+        <div class="container">
+            <section class="blog-section">
+                <h1 data-aos="fade-up">Our Blog</h1>
+                <p data-aos="fade-up" data-aos-delay="100">Stay updated with the latest web development trends, tips, and insights from our team.</p>
+                
+                <div class="blog-grid">
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> March 15, 2025</span>
+                                <span><i class="far fa-user"></i> Nitin Sharma</span>
+                                <span><i class="far fa-clock"></i> 5 min read</span>
+                            </div>
+                            <h3>10 Best Practices for Responsive Web Design in 2025</h3>
+                            <p class="blog-excerpt">Learn the most effective techniques for creating websites that look great on all devices, from mobile phones to desktop computers.</p>
+                            <a href="#" class="btn">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> March 10, 2025</span>
+                                <span><i class="far fa-user"></i> Trusha</span>
+                                <span><i class="far fa-clock"></i> 7 min read</span>
+                            </div>
+                            <h3>Optimizing Website Performance: A Complete Guide</h3>
+                            <p class="blog-excerpt">Discover strategies to improve your website's loading speed and overall performance for better user experience and SEO rankings.</p>
+                            <a href="#" class="btn">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> March 5, 2025</span>
+                                <span><i class="far fa-user"></i> Nitin Sharma</span>
+                                <span><i class="far fa-clock"></i> 6 min read</span>
+                            </div>
+                            <h3>Web Security Essentials Every Developer Should Know</h3>
+                            <p class="blog-excerpt">Protect your websites from common security threats with these essential practices and tools for web developers.</p>
+                            <a href="#" class="btn">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> February 28, 2025</span>
+                                <span><i class="far fa-user"></i> Trusha</span>
+                                <span><i class="far fa-clock"></i> 8 min read</span>
+                            </div>
+                            <h3>Building Scalable E-commerce Platforms: Best Practices</h3>
+                            <p class="blog-excerpt">Learn how to create e-commerce websites that can handle growth and provide seamless shopping experiences for customers.</p>
+                            <a href="#" class="btn">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> February 20, 2025</span>
+                                <span><i class="far fa-user"></i> Nitin Sharma</span>
+                                <span><i class="far fa-clock"></i> 4 min read</span>
+                            </div>
+                            <h3>The Future of Mobile-First Web Development</h3>
+                            <p class="blog-excerpt">Explore emerging trends in mobile web development and how to stay ahead in the rapidly evolving digital landscape.</p>
+                            <a href="#" class="btn">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="700">
+                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80')"></div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> February 15, 2025</span>
+                                <span><i class="far fa-user"></i> Trusha</span>
+                                <span><i class="far fa-clock"></i> 5 min read</span>
+                            </div>
+                            <h3>SEO Strategies for Modern Web Developers</h3>
+                            <p class="blog-excerpt">Implement these SEO techniques to improve your website's visibility and ranking in search engine results.</p>
+                            <a href="#" class="btn">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section class="newsletter-section" data-aos="fade-up">
+                <h3>Never Miss a Post</h3>
+                <p>Subscribe to our blog and get the latest web development insights delivered directly to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/itz_nitin_sharma08"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="https://discord.gg/WnUzMqQd"><i class="fab fa-discord"></i></a>
+        </div>
+        <p>&copy; 2025 Nitin And Trusha. All rights reserved.</p>
+        <p>Developed by Nitin And Trusha</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+            }, 1500);
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Scroll to Top Functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll Progress Indicator
+        const scrollProgress = document.getElementById('scrollProgress');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.pageYOffset / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Custom Cursor - Only for desktop
+        if (window.matchMedia("(min-width: 1025px)").matches) {
+            const cursor = document.getElementById('cursor');
+            const cursorFollower = document.getElementById('cursorFollower');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 100);
+            });
+        } else {
+            // Hide cursor elements on mobile/tablet
+            document.getElementById('cursor').style.display = 'none';
+            document.getElementById('cursorFollower').style.display = 'none';
+        }
+
+        // Newsletter Form
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            alert(`Thank you for subscribing with: ${email}`);
+            newsletterForm.reset();
+        });
+    </script>
+</body>
+</html>

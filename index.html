@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website - Nitin And Trusha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-spinner"></div>
+            <p>Loading amazing content...</p>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Custom Cursor - Only for desktop -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <header class="main-header">
+        <div class="logo">
+            <h2><img src="https://i.postimg.cc/0jNjXkKR/1000051320-removebg-preview.png" alt="" /></h2>
+        </div>
+    
+        <nav>
+            <ul class="navlist">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li id="authLinks"><a href="form-login.html">Profile</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h3>Navigation</h3>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li id="mobileAuthLinks"><a href="form-login.html">Profile</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <main>
+        <div class="container">
+            <section class="hero-section">
+                <div class="hero-content" data-aos="fade-right" data-aos-delay="200">
+                    <p class="intro">Hi! We are <span>Nitin And Trusha.</span></p>
+                    <h1>Web Developers</h1>
+                    <p class="detail">Professional web developers specializing in building and maintaining websites. Proficient in HTML, CSS, JavaScript, and frameworks like React and Angular. We work with designers to create functional, responsive, and visually appealing websites across all devices.</p>
+                    <div class="btn-container">
+                        <a href="#contact" class="btn">HIRE US <i class="fas fa-arrow-right"></i></a>
+                        <a href="#projects" class="btn btn-secondary">VIEW PROJECTS <i class="fas fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Web Development Team">
+                </div>
+            </section>
+
+            <!-- Interactive Counter -->
+            <section class="interactive-counter" data-aos="fade-up">
+                <div class="counter-item">
+                    <div class="counter-number" data-count="50">0</div>
+                    <div class="counter-label">Projects Completed</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" data-count="98">0</div>
+                    <div class="counter-label">Client Satisfaction</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" data-count="24">0</div>
+                    <div class="counter-label">Support Available</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" data-count="5">0</div>
+                    <div class="counter-label">Years Experience</div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="projects-section" id="projects">
+                <h2 data-aos="fade-up">Our Recent Projects</h2>
+                <div class="projects-filter" data-aos="fade-up" data-aos-delay="100">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web Design</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                    <button class="filter-btn" data-filter="app">Web Apps</button>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200" data-category="web">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80')">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Corporate Website</h3>
+                            <p>A responsive corporate website with modern design and seamless user experience.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML/CSS</span>
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">Responsive</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300" data-category="ecommerce">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>E-commerce Store</h3>
+                            <p>Full-featured online store with product catalog, cart, and secure checkout.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Node.js</span>
+                                <span class="project-tag">MongoDB</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="400" data-category="app">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80')">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Task Management App</h3>
+                            <p>Productivity application for managing tasks, deadlines, and team collaboration.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Vue.js</span>
+                                <span class="project-tag">Firebase</span>
+                                <span class="project-tag">PWA</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="testimonials-section">
+                <h2 data-aos="fade-up">What Our Clients Say</h2>
+                <div class="testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-slide active">
+                        <p>Working with Nitin and Trusha was an absolute pleasure. They delivered our project ahead of schedule and exceeded our expectations in every way.</p>
+                        <div class="client-info">
+                            <strong>Sarah Johnson</strong>
+                            <span>CEO, Tech Solutions Inc.</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p>The website they built for our business has significantly increased our online presence and customer engagement. Highly recommended!</p>
+                        <div class="client-info">
+                            <strong>Michael Chen</strong>
+                            <span>Marketing Director, Global Retail</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p>Professional, creative, and technically skilled. They transformed our ideas into a beautiful, functional website that our customers love.</p>
+                        <div class="client-info">
+                            <strong>Emily Rodriguez</strong>
+                            <span>Founder, Creative Studio</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-slide="0"></span>
+                    <span class="carousel-dot" data-slide="1"></span>
+                    <span class="carousel-dot" data-slide="2"></span>
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section class="newsletter-section" data-aos="fade-up">
+                <h3>Stay Updated With Our Latest Projects</h3>
+                <p>Subscribe to our newsletter for web development tips, industry insights, and exclusive offers.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/itz_nitin_sharma08"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="https://discord.gg/WnUzMqQd"><i class="fab fa-discord"></i></a>
+        </div>
+        <p>&copy; 2025 Nitin And Trusha. All rights reserved.</p>
+        <p>Developed by Nitin And Trusha</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDg0IEoIbnoXZc79qgFGrWnAiJKtOUcdSU",
+    authDomain: "nd-store-399c9.firebaseapp.com",
+    projectId: "nd-store-399c9",
+    storageBucket: "nd-store-399c9.firebasestorage.app",
+    messagingSenderId: "789884520415",
+    appId: "1:789884520415:web:9b78785ed3837d3c64666a",
+    measurementId: "G-K4DXJFLXFZ"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+            }, 1500);
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Scroll to Top Functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll Progress Indicator
+        const scrollProgress = document.getElementById('scrollProgress');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.pageYOffset / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Custom Cursor - Only for desktop
+        if (window.matchMedia("(min-width: 1025px)").matches) {
+            const cursor = document.getElementById('cursor');
+            const cursorFollower = document.getElementById('cursorFollower');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 100);
+            });
+        } else {
+            // Hide cursor elements on mobile/tablet
+            document.getElementById('cursor').style.display = 'none';
+            document.getElementById('cursorFollower').style.display = 'none';
+        }
+
+        // Projects Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Testimonials Carousel
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            testimonialSlides.forEach(slide => slide.classList.remove('active'));
+            carouselDots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + testimonialSlides.length) % testimonialSlides.length;
+            
+            testimonialSlides[currentSlide].classList.add('active');
+            carouselDots[currentSlide].classList.add('active');
+        }
+
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Auto slide
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+
+        // Newsletter Form with Firebase
+        const newsletterForm = document.getElementById('newsletterForm');
+        newsletterForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('newsletterEmail').value;
+            
+            try {
+                // Add subscriber to Firestore
+                await db.collection('subscribers').add({
+                    email: email,
+                    subscribedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    source: 'website_newsletter'
+                });
+                
+                alert(`Thank you for subscribing with: ${email}`);
+                newsletterForm.reset();
+            } catch (error) {
+                console.error('Error adding subscriber:', error);
+                alert('There was an error subscribing. Please try again.');
+            }
+        });
+
+        // Interactive Counter Animation
+        const counters = document.querySelectorAll('.counter-number');
+        const speed = 200;
+
+        function animateCounter(counter) {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => animateCounter(counter), 1);
+            } else {
+                counter.innerText = target;
+            }
+        }
+
+        // Start counter animation when element is in viewport
+        function startCounterWhenVisible() {
+            counters.forEach(counter => {
+                const counterPosition = counter.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (counterPosition < screenPosition) {
+                    if (!counter.classList.contains('animated')) {
+                        counter.classList.add('animated');
+                        animateCounter(counter);
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('scroll', startCounterWhenVisible);
+        // Initial check
+        startCounterWhenVisible();
+    </script>
+</body>
+</html>

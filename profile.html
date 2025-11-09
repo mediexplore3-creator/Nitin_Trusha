@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Nitin And Trusha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-spinner"></div>
+            <p>Loading your profile...</p>
+        </div>
+    </div>
+
+   <div class="logo">
+    <h2><img src="https://i.postimg.cc/0jNjXkKR/1000051320-removebg-preview.png" alt="" /></h2>
+        </div>
+        <nav>
+            <ul class="navlist">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li id="authLinks">
+                    <!-- Dynamic auth links will be inserted here -->
+                </li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h3>Navigation</h3>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li id="mobileAuthLinks">
+                <!-- Dynamic mobile auth links will be inserted here -->
+            </li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <main class="container">
+        <section class="profile-section">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1 id="profileUserName">Loading...</h1>
+                <p id="profileUserEmail" class="profile-user-email">Loading...</p>
+                <span class="profile-badge" id="profileBadge">Premium Member</span>
+            </div>
+
+            <!-- Profile Tabs -->
+            <div class="profile-tabs">
+                <button class="profile-tab active" data-tab="overview">
+                    <i class="fas fa-chart-pie"></i> Overview
+                </button>
+                <button class="profile-tab" data-tab="settings">
+                    <i class="fas fa-cog"></i> Settings
+                </button>
+                <button class="profile-tab" data-tab="security">
+                    <i class="fas fa-shield-alt"></i> Security
+                </button>
+                <button class="profile-tab" data-tab="activity">
+                    <i class="fas fa-history"></i> Activity
+                </button>
+            </div>
+
+            <!-- Overview Tab -->
+            <div class="profile-tab-content active" id="overviewTab">
+                <div class="profile-card">
+                    <h2><i class="fas fa-user-circle"></i> Profile Information</h2>
+                    <div class="profile-info-grid">
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-user"></i> Username</span>
+                            <div class="info-value" id="infoUsername">Loading...</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-envelope"></i> Email Address</span>
+                            <div class="info-value" id="infoEmail">Loading...</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-calendar-plus"></i> Member Since</span>
+                            <div class="info-value" id="infoJoinDate">Loading...</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-sign-in-alt"></i> Last Login</span>
+                            <div class="info-value" id="infoLastLogin">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <h2><i class="fas fa-chart-bar"></i> Account Statistics</h2>
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statProjects">0</div>
+                            <div class="stat-label">Projects Created</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statSubscriptions">1</div>
+                            <div class="stat-label">Newsletters</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statActivity">12</div>
+                            <div class="stat-label">Activities</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statMember">85%</div>
+                            <div class="stat-label">Profile Complete</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="profile-tab-content" id="settingsTab">
+                <div class="profile-card">
+                    <h2><i class="fas fa-user-edit"></i> Profile Settings</h2>
+                    <form class="profile-form" id="profileForm">
+                        <div class="form-group-enhanced">
+                            <label class="form-label"><i class="fas fa-user"></i> Username</label>
+                            <input type="text" id="settingsUsername" class="form-input" placeholder="Enter your username">
+                        </div>
+                        <div class="form-group-enhanced">
+                            <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                            <input type="email" id="settingsEmail" class="form-input" readonly>
+                        </div>
+                        <div class="form-group-enhanced">
+                            <label class="form-label"><i class="fas fa-lock"></i> New Password</label>
+                            <input type="password" id="settingsPassword" class="form-input" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group-enhanced">
+                            <label class="form-label"><i class="fas fa-lock"></i> Confirm Password</label>
+                            <input type="password" id="settingsConfirmPassword" class="form-input" placeholder="Confirm new password">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="cancelChanges">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="profile-card">
+                    <h2><i class="fas fa-bell"></i> Notification Preferences</h2>
+                    <div style="display: grid; gap: 1rem;">
+                        <label style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                            <input type="checkbox" checked style="accent-color: var(--primary-color);">
+                            <span>Email notifications</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                            <input type="checkbox" checked style="accent-color: var(--primary-color);">
+                            <span>Project updates</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                            <input type="checkbox" style="accent-color: var(--primary-color);">
+                            <span>Marketing emails</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Tab -->
+            <div class="profile-tab-content" id="securityTab">
+                <div class="profile-card">
+                    <h2><i class="fas fa-shield-alt"></i> Security Overview</h2>
+                    <div class="security-level">
+                        <span>Security Level:</span>
+                        <div class="security-indicator active"></div>
+                        <div class="security-indicator active"></div>
+                        <div class="security-indicator"></div>
+                        <strong>Medium</strong>
+                    </div>
+                    <p>Your account security is moderate. Consider enabling two-factor authentication for enhanced security.</p>
+                </div>
+
+                <div class="profile-card">
+                    <h2><i class="fas fa-mobile-alt"></i> Two-Factor Authentication</h2>
+                    <p>Add an extra layer of security to your account by enabling two-factor authentication.</p>
+                    <div class="form-actions">
+                        <button type="button" class="btn">
+                            <i class="fas fa-qrcode"></i> Enable 2FA
+                        </button>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <h2><i class="fas fa-desktop"></i> Active Sessions</h2>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Current Session</div>
+                            <div class="activity-description">Chrome on Windows • <span id="currentLocation">Loading...</span></div>
+                            <div class="activity-time" id="currentSessionTime">Active now</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Tab -->
+            <div class="profile-tab-content" id="activityTab">
+                <div class="profile-card">
+                    <h2><i class="fas fa-history"></i> Recent Activity</h2>
+                    <div class="activity-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Account Created</div>
+                                <div class="activity-description">Your account was successfully created</div>
+                                <div class="activity-time" id="accountCreatedAt">Loading...</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Login Activity</div>
+                                <div class="activity-description">Successful login from your device</div>
+                                <div class="activity-time" id="lastLoginActivity">Loading...</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Newsletter Subscription</div>
+                                <div class="activity-description">You subscribed to our weekly newsletter</div>
+                                <div class="activity-time">2 days ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Profile Updated</div>
+                                <div class="activity-description">You updated your profile information</div>
+                                <div class="activity-time">1 week ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="profile-card">
+                <h2 style="color: #ff6b6b;"><i class="fas fa-exclamation-triangle"></i> Danger Zone</h2>
+                <p>Once you delete your account, there is no going back. Please be certain.</p>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-danger" id="deleteAccount">
+                        <i class="fas fa-trash"></i> Delete Account Permanently
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/itz_nitin_sharma08"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="https://discord.gg/WnUzMqQd"><i class="fab fa-discord"></i></a>
+        </div>
+        <p>&copy; 2025 Nitin And Trusha. All rights reserved.</p>
+        <p>Developed by Nitin And Trusha</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDg0IEoIbnoXZc79qgFGrWnAiJKtOUcdSU",
+    authDomain: "nd-store-399c9.firebaseapp.com",
+    projectId: "nd-store-399c9",
+    storageBucket: "nd-store-399c9.firebasestorage.app",
+    messagingSenderId: "789884520415",
+    appId: "1:789884520415:web:9b78785ed3837d3c64666a",
+    measurementId: "G-K4DXJFLXFZ"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        let currentUserData = null;
+
+        // Set persistence to LOCAL
+        auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            .catch((error) => {
+                console.error('Error setting auth persistence:', error);
+            });
+
+        // Check authentication and load profile
+        auth.onAuthStateChanged(async (user) => {
+            console.log('Auth state changed:', user ? user.email : 'No user');
+            updateNavigation(user);
+            
+            if (user) {
+                await loadUserProfile(user);
+            } else {
+                console.log('No user found, redirecting to login...');
+                window.location.href = 'form-login.html';
+            }
+        });
+
+        // Load user profile data
+        async function loadUserProfile(user) {
+            try {
+                console.log('Loading profile for user:', user.uid);
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                
+                if (userDoc.exists) {
+                    currentUserData = userDoc.data();
+                    console.log('User data loaded:', currentUserData);
+                    displayUserProfile(user, currentUserData);
+                } else {
+                    console.log('User document not found, creating...');
+                    // Create user document if it doesn't exist
+                    await db.collection('users').doc(user.uid).set({
+                        username: user.email.split('@')[0],
+                        email: user.email,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    await loadUserProfile(user); // Reload
+                }
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                alert('Error loading profile data.');
+            }
+        }
+
+        // Display user profile data
+        function displayUserProfile(user, userData) {
+            // Profile header
+            document.getElementById('profileUserName').textContent = userData.username || 'User';
+            document.getElementById('profileUserEmail').textContent = user.email;
+            
+            // Overview tab
+            document.getElementById('infoUsername').textContent = userData.username || 'Not set';
+            document.getElementById('infoEmail').textContent = user.email;
+            document.getElementById('infoJoinDate').textContent = userData.createdAt ? 
+                new Date(userData.createdAt.toDate()).toLocaleDateString() : 'Recently';
+            document.getElementById('infoLastLogin').textContent = userData.lastLogin ? 
+                new Date(userData.lastLogin.toDate()).toLocaleDateString() : 'Now';
+
+            // Settings tab
+            document.getElementById('settingsUsername').value = userData.username || '';
+            document.getElementById('settingsEmail').value = user.email;
+
+            // Activity tab
+            if (userData.createdAt) {
+                document.getElementById('accountCreatedAt').textContent = 
+                    new Date(userData.createdAt.toDate()).toLocaleDateString();
+                document.getElementById('lastLoginActivity').textContent = 
+                    userData.lastLogin ? new Date(userData.lastLogin.toDate()).toLocaleDateString() : 'Recently';
+            }
+
+            // Update profile completion
+            updateProfileCompletion(userData);
+
+            // Hide preloader
+            setTimeout(() => {
+                document.querySelector('.preloader').classList.add('fade-out');
+            }, 500);
+        }
+
+        // Update profile completion percentage
+        function updateProfileCompletion(userData) {
+            let completion = 0;
+            if (userData.username) completion += 40;
+            if (userData.email) completion += 30;
+            if (userData.createdAt) completion += 30;
+            
+            document.getElementById('statMember').textContent = completion + '%';
+            document.querySelector('.progress-fill').style.width = completion + '%';
+        }
+
+        // Tab functionality
+        document.querySelectorAll('.profile-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.profile-tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab') + 'Tab';
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Update profile form
+        document.getElementById('profileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('settingsUsername').value;
+            const password = document.getElementById('settingsPassword').value;
+            const confirmPassword = document.getElementById('settingsConfirmPassword').value;
+
+            try {
+                const user = auth.currentUser;
+                
+                // Update username in Firestore
+                await db.collection('users').doc(user.uid).update({
+                    username: username,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Update password if provided
+                if (password) {
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match!');
+                        return;
+                    }
+                    if (password.length < 6) {
+                        alert('Password should be at least 6 characters long!');
+                        return;
+                    }
+                    await user.updatePassword(password);
+                }
+
+                alert('Profile updated successfully!');
+                await loadUserProfile(user); // Reload profile data
+                
+                // Reset password fields
+                document.getElementById('settingsPassword').value = '';
+                document.getElementById('settingsConfirmPassword').value = '';
+                
+            } catch (error) {
+                console.error('Error updating profile:', error);
+                alert('Error updating profile: ' + error.message);
+            }
+        });
+
+        // Cancel changes
+        document.getElementById('cancelChanges').addEventListener('click', () => {
+            if (currentUserData) {
+                document.getElementById('settingsUsername').value = currentUserData.username || '';
+            }
+            document.getElementById('settingsPassword').value = '';
+            document.getElementById('settingsConfirmPassword').value = '';
+        });
+
+        // Delete account
+        document.getElementById('deleteAccount').addEventListener('click', async () => {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                const confirmDelete = prompt('Type "DELETE" to confirm account deletion:');
+                if (confirmDelete === 'DELETE') {
+                    try {
+                        const user = auth.currentUser;
+                        
+                        // Delete user data from Firestore
+                        await db.collection('users').doc(user.uid).delete();
+                        
+                        // Delete user from Authentication
+                        await user.delete();
+                        
+                        alert('Account deleted successfully.');
+                        window.location.href = 'index.html';
+                        
+                    } catch (error) {
+                        console.error('Error deleting account:', error);
+                        alert('Error deleting account: ' + error.message);
+                    }
+                } else {
+                    alert('Account deletion cancelled.');
+                }
+            }
+        });
+
+        // Check URL parameters for tab
+        const urlParams = new URLSearchParams(window.location.search);
+        const tabParam = urlParams.get('tab');
+        if (tabParam) {
+            const tab = document.querySelector(`[data-tab="${tabParam}"]`);
+            if (tab) {
+                tab.click();
+            }
+        }
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Scroll to Top Functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Update navigation based on auth state
+        function updateNavigation(user) {
+            const authLinks = document.getElementById('authLinks');
+            const mobileAuthLinks = document.getElementById('mobileAuthLinks');
+            
+            const authHTML = user ? `
+                <li class="nav-user-profile">
+                    <a href="profile.html" class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profile</span>
+                    </a>
+                    <ul class="user-dropdown">
+                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                        <li><a href="profile.html?tab=settings"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </li>
+            ` : `
+                <li><a href="form-login.html">Profile</a></li>
+            `;
+            
+            const mobileAuthHTML = user ? `
+                <li class="nav-user-profile mobile">
+                    <a href="profile.html" class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profile</span>
+                    </a>
+                    <ul class="user-dropdown">
+                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                        <li><a href="profile.html?tab=settings"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="#" id="mobileLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </li>
+            ` : `
+                <li><a href="form-login.html">Profile</a></li>
+            `;
+            
+            if (authLinks) authLinks.innerHTML = authHTML;
+            if (mobileAuthLinks) mobileAuthLinks.innerHTML = mobileAuthHTML;
+            
+            // Add logout functionality
+            const logoutBtn = document.getElementById('logoutBtn');
+            const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
+            
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', handleLogout);
+            }
+            if (mobileLogoutBtn) {
+                mobileLogoutBtn.addEventListener('click', handleLogout);
+            }
+        }
+
+        // Handle logout
+        async function handleLogout(e) {
+            e.preventDefault();
+            try {
+                await auth.signOut();
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Logout error:', error);
+                alert('Error during logout. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nitin And Trusha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-spinner"></div>
+            <p>Loading amazing content...</p>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <header class="main-header">
+        <div class="logo">
+    <h2><img src="https://i.postimg.cc/0jNjXkKR/1000051320-removebg-preview.png" alt="" /></h2>
+        </div>
+        <nav>
+            <ul class="navlist">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="form-login.html">Profile</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h3>Navigation</h3>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="form-login.html">Profile</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <main class="container">
+        <section class="about-me">
+            <h1 data-aos="fade-up">About Us</h1>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h2>Welcome to Our World of Web Development!</h2>
+                    <p>We are Nitin Sharma and Trusha, passionate and aspiring web developers. Our journey into the world of coding began with a fascination for how websites work, and it has grown into a deep-seated passion for creating beautiful, functional, and user-friendly digital experiences.</p>
+                    <p>From mastering the fundamentals of HTML, CSS, and JavaScript to exploring advanced frameworks, we are constantly learning and pushing the boundaries of our knowledge. This website is a reflection of our journey, a place where we share our projects, insights, and discoveries.</p>
+                    <h3>Our Philosophy</h3>
+                    <p>We believe that a great website is more than just code; it's an experience. It's about creating a seamless and intuitive interface that connects with users. Our goal is to blend creativity with technical expertise to build websites that are not only visually appealing but also performant and accessible to everyone.</p>
+                </div>
+                <div class="about-timeline" data-aos="fade-left" data-aos-delay="200">
+                    <h2>Our Journey</h2>
+                    <ul>
+                        <li><span>2022</span> - Started learning HTML and CSS.</li>
+                        <li><span>2023</span> - Dived into JavaScript and built our first interactive projects.</li>
+                        <li><span>2024</span> - Began exploring frameworks like React and started freelancing.</li>
+                        <li><span>2025</span> - Focused on full-stack development and building complex applications.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <h2 data-aos="fade-up">Our Skills</h2>
+            <div class="skills-grid">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML/CSS</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>React</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Node.js</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>UI/UX Design</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Responsive Design</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2 data-aos="fade-up">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-photo nitin">
+    <i class="fas fa-user"></i> <!-- Fallback if image doesn't load -->
+</div>
+                    <div class="team-info">
+                        <h3>Nitin Sharma</h3>
+                        <p class="team-role">Frontend Developer & UI/UX Designer</p>
+                        <p class="team-bio">Nitin specializes in creating beautiful, responsive user interfaces with a focus on user experience. He has a keen eye for design and loves bringing creative concepts to life through code. With expertise in modern frameworks and a passion for clean code, he ensures every project is both functional and visually stunning.</p>
+                        <div class="team-social">
+                            <a href="https://www.instagram.com/itz_nitin_sharma08"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://discord.gg/WnUzMqQd"><i class="fab fa-discord"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-photo trusha">
+    <i class="fas fa-user"></i> <!-- Fallback if image doesn't load -->
+</div>
+                    <div class="team-info">
+                        <h3>Trusha</h3>
+                        <p class="team-role">Backend Developer & Database Specialist</p>
+                        <p class="team-bio">Trusha excels in server-side development and database management. She ensures that applications are robust, scalable, and perform efficiently under various loads. With a strong foundation in data structures and algorithms, she builds the backbone of applications that power modern digital experiences.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <h2 data-aos="fade-up">What Our Clients Say</h2>
+            <div class="testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-slide active">
+                    <p>Working with Nitin and Trusha was an absolute pleasure. They delivered our project ahead of schedule and exceeded our expectations in every way.</p>
+                    <div class="client-info">
+                        <strong>Sarah Johnson</strong>
+                        <span>CEO, Tech Solutions Inc.</span>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <p>The website they built for our business has significantly increased our online presence and customer engagement. Highly recommended!</p>
+                    <div class="client-info">
+                        <strong>Michael Chen</strong>
+                        <span>Marketing Director, Global Retail</span>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="carousel-dot active" data-slide="0"></span>
+                <span class="carousel-dot" data-slide="1"></span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/itz_nitin_sharma08"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="https://discord.gg/WnUzMqQd"><i class="fab fa-discord"></i></a>
+        </div>
+        <p>&copy; 2025 Nitin And Trusha. All rights reserved.</p>
+        <p>Developed by Nitin And Trusha</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDg0IEoIbnoXZc79qgFGrWnAiJKtOUcdSU",
+    authDomain: "nd-store-399c9.firebaseapp.com",
+    projectId: "nd-store-399c9",
+    storageBucket: "nd-store-399c9.firebasestorage.app",
+    messagingSenderId: "789884520415",
+    appId: "1:789884520415:web:9b78785ed3837d3c64666a",
+    measurementId: "G-K4DXJFLXFZ"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+            }, 1500);
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Scroll to Top Functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll Progress Indicator
+        const scrollProgress = document.getElementById('scrollProgress');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.pageYOffset / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        // Animate skill bars on scroll
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (isElementInViewport(bar)) {
+                    bar.style.width = width;
+                }
+            });
+        }
+
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        window.addEventListener('scroll', animateSkillBars);
+        // Initial check
+        animateSkillBars();
+
+        // Testimonials Carousel
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            testimonialSlides.forEach(slide => slide.classList.remove('active'));
+            carouselDots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + testimonialSlides.length) % testimonialSlides.length;
+            
+            testimonialSlides[currentSlide].classList.add('active');
+            carouselDots[currentSlide].classList.add('active');
+        }
+
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Auto slide
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+    </script>
+</body>
+</html>

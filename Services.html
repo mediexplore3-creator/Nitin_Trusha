@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Nitin And Trusha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-spinner"></div>
+            <p>Loading amazing content...</p>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Custom Cursor - Only for desktop -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+   <div class="logo">
+    <h2><img src="https://i.postimg.cc/0jNjXkKR/1000051320-removebg-preview.png" alt="" /></h2>
+        </div>
+        <nav>
+            <ul class="navlist">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Services.html" class="active">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="form-login.html">Profile</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h3>Navigation</h3>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="Services.html" class="active">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="form-login.html">Profile</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <main class="container">
+        <section class="services-section">
+            <h1 data-aos="fade-up">Our Services</h1>
+            <p data-aos="fade-up" data-aos-delay="100">We offer a comprehensive range of web development services to help your business thrive in the digital world.</p>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h2>Website Design</h2>
+                    <p>Creating visually stunning and user-friendly website designs that leave a lasting impression and drive conversions.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
+                    <h2>Web Development</h2>
+                    <p>Bringing your designs to life with clean, efficient, and responsive code that works seamlessly across all devices.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h2>E-commerce Solutions</h2>
+                    <p>Building robust and scalable e-commerce platforms to help you sell online and grow your business.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h2>Responsive Design</h2>
+                    <p>Ensuring your website looks and works perfectly on all devices, from desktops to smartphones and tablets.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                    <h2>Performance Optimization</h2>
+                    <p>Improving your website's speed and performance for a better user experience and higher search engine rankings.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="service-icon"><i class="fas fa-headset"></i></div>
+                    <h2>Support & Maintenance</h2>
+                    <p>Providing ongoing support and maintenance to keep your website running smoothly and securely.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Section -->
+        <section class="social-proof" data-aos="fade-up">
+            <div class="proof-item">
+                <div class="proof-number">50+</div>
+                <div class="proof-label">Projects Completed</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">98%</div>
+                <div class="proof-label">Client Satisfaction</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">24/7</div>
+                <div class="proof-label">Support Available</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">2+</div>
+                <div class="proof-label">Years Experience</div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <h2 data-aos="fade-up">What Our Clients Say</h2>
+            <div class="testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-slide active">
+                    <p>Working with Nitin and Trusha was an absolute pleasure. They delivered our project ahead of schedule and exceeded our expectations in every way.</p>
+                    <div class="client-info">
+                        <strong>Sarah Johnson</strong>
+                        <span>CEO, Tech Solutions Inc.</span>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <p>The website they built for our business has significantly increased our online presence and customer engagement. Highly recommended!</p>
+                    <div class="client-info">
+                        <strong>Michael Chen</strong>
+                        <span>Marketing Director, Global Retail</span>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="carousel-dot active" data-slide="0"></span>
+                <span class="carousel-dot" data-slide="1"></span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/itz_nitin_sharma08"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="https://discord.gg/WnUzMqQd"><i class="fab fa-discord"></i></a>
+        </div>
+        <p>&copy; 2025 Nitin And Trusha. All rights reserved.</p>
+        <p>Developed by Nitin And Trusha</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDg0IEoIbnoXZc79qgFGrWnAiJKtOUcdSU",
+    authDomain: "nd-store-399c9.firebaseapp.com",
+    projectId: "nd-store-399c9",
+    storageBucket: "nd-store-399c9.firebasestorage.app",
+    messagingSenderId: "789884520415",
+    appId: "1:789884520415:web:9b78785ed3837d3c64666a",
+    measurementId: "G-K4DXJFLXFZ"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+            }, 1500);
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Scroll to Top Functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll Progress Indicator
+        const scrollProgress = document.getElementById('scrollProgress');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.pageYOffset / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Custom Cursor - Only for desktop
+        if (window.matchMedia("(min-width: 1025px)").matches) {
+            const cursor = document.getElementById('cursor');
+            const cursorFollower = document.getElementById('cursorFollower');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 100);
+            });
+        } else {
+            // Hide cursor elements on mobile/tablet
+            document.getElementById('cursor').style.display = 'none';
+            document.getElementById('cursorFollower').style.display = 'none';
+        }
+
+        // Testimonials Carousel
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            testimonialSlides.forEach(slide => slide.classList.remove('active'));
+            carouselDots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + testimonialSlides.length) % testimonialSlides.length;
+            
+            testimonialSlides[currentSlide].classList.add('active');
+            carouselDots[currentSlide].classList.add('active');
+        }
+
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Auto slide
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+    </script>
+</body>
+</html>
